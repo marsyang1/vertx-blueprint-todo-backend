@@ -35,7 +35,7 @@ public abstract class RestfulApiVerticle extends AbstractVerticle {
    */
   protected Completable createHttpServer(Router router, String host, int port) {
     return vertx.createHttpServer()
-      .requestHandler(router::accept)
+      .requestHandler(router::handle)
       .rxListen(port, host)
       .toCompletable();
   }
